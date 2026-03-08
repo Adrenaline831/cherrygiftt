@@ -228,6 +228,121 @@ input{
   100%{transform:translateY(110vh) scale(1); opacity:0;}
 }
 
+/* ------------------ Скрываем все кроме первой страницы ------------------ */
+#page2,#page3,#captcha,#page4,#page5,#page6,#page7,#page10,#storyContainer{display:none;}
+
+/* ------------------ Основные стили ------------------ */
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+    background: linear-gradient(to bottom right,#ffe6f0,#fff4e6);
+    color:#333;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    text-align:center;
+}
+
+.containerStart{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:white;
+    padding:40px 60px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    max-width:600px;
+    width:90%;
+}
+
+/* ------------------ Заголовки ------------------ */
+h1,h2{margin:20px 0; color:#d63384;}
+
+/* ------------------ Кнопки ------------------ */
+button{
+    padding:12px 25px;
+    margin:10px;
+    font-size:16px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    background:linear-gradient(45deg,#ff99cc,#ff66aa);
+    color:white;
+    transition:transform 0.2s, background 0.3s;
+}
+button:hover{
+    transform:scale(1.05);
+    background:linear-gradient(45deg,#ff66aa,#ff3388);
+}
+
+/* ------------------ Поля ввода ------------------ */
+input{
+    padding:10px;
+    margin:10px;
+    font-size:16px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    width:80%;
+    max-width:300px;
+}
+
+/* ------------------ Контейнер выбора ------------------ */
+#choiceBox{
+    position:relative;
+    height:200px;
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+#choiceBox button{padding:12px 25px; font-size:16px;}
+#noMe{position:absolute; left:150px; top:60px;}
+
+/* ------------------ Контейнер истории ------------------ */
+#storyContainer{
+    cursor:pointer;
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.slide{
+    display:none;
+    text-align:center;
+    animation:fadeIn 0.5s;
+    flex-direction:column;
+}
+.slide img{
+    border-radius:10px;
+    max-width:100%;
+    margin:10px 0;
+    object-fit:cover;
+}
+.slide p,.slide h2{margin-top:10px;}
+
+/* ------------------ Анимация ------------------ */
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.95);}
+    to{opacity:1; transform:scale(1);}
+}
+
+/* ------------------ Сердечки ------------------ */
+.heart{
+  position:fixed;
+  pointer-events:none;
+  color:#ff6699;
+  animation:fall 3.6s linear;
+}
+@keyframes fall{
+  0%{transform:translateY(-10vh) scale(.6); opacity:0;}
+  50%{opacity:1;}
+  100%{transform:translateY(110vh) scale(1); opacity:0;}
+}
+
 /* ------------------ Адаптив для телефонов ------------------ */
 @media(max-width:420px){
     body{
