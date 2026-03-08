@@ -113,4 +113,90 @@ input {
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95);}
     to { opacity: 1; transform: scale(1);}
+
+}
+/* ---------- АДАПТИВ ДЛЯ ТЕЛЕФОНОВ ---------- */
+@media (max-width: 420px){
+
+body{
+    padding:20px;
+    align-items:flex-start;
+}
+
+/* контейнер открытки */
+.containerStart{
+    padding:25px 20px;
+    border-radius:16px;
+    width:100%;
+}
+
+/* заголовки */
+h1{
+    font-size:24px;
+}
+
+h2{
+    font-size:20px;
+}
+
+p{
+    font-size:16px;
+}
+
+/* кнопки */
+button{
+    width:100%;
+    font-size:16px;
+    padding:14px;
+    margin:8px 0;
+}
+
+/* поле ввода */
+input{
+    width:100%;
+    font-size:16px;
+}
+
+/* кнопки на первой странице */
+#page1 button{
+    width:100%;
+}
+
+/* блок с "кто зайчик" */
+#choiceBox{
+    height:160px;
+}
+
+/* картинки в истории */
+.slide img{
+    width:100%;
+    height:auto;
+}
+
+/* ряд из воспоминаний */
+.slide div{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.slide div img{
+    width:42%;
+    margin:4px;
+}
+
+/* текст рядом с фото (вторая сцена) */
+.slide[style*="flex"]{
+    flex-direction:column;
+    text-align:center;
+}
+
+.slide[style*="flex"] img{
+    width:100%;
+}
+
+/* уменьшение отступов */
+.slide p{
+    padding:0 5px;
+}
+
 }
