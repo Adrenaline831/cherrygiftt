@@ -13,23 +13,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>litlleCherry</title>
-<style>
-  body { font-family: sans-serif; margin:0; padding:0; text-align:center; }
-  button { padding:10px 20px; margin:5px; font-size:16px; cursor:pointer; }
-  #choiceBox { position:relative; height:200px; margin-top:40px; }
-  #noMe { position:absolute; left:150px; top:60px; }
-  .slide img { border-radius:10px; max-width:100%; }
-  .slide p, .slide h2 { margin-top:10px; }
-  #storyContainer { cursor:pointer; }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>litlleCherry</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-<div class="containerStart">
 
-  <!-- Страница 1 -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="containerStart">
+<!-- Кнопка аудио -->
+    <button id="audioBtn" title="Включить музыку" aria-label="Включить музыку">
+      🔊
+    </button>
+ <!-- Сам аудиотрек -->
+    <audio id="bgAudio" loop>
+      <source src="music.mp3" type="audio/mpeg">
+    </audio>
+<!-- Страница 1 -->
   <div id="page1">
     <h1>Привет!!! Хочешь подарочек?</h1>
     <button onclick="yes()">Да</button>
@@ -37,19 +44,19 @@
   </div>
 
   <!-- Страница 2 -->
-  <div id="page2" style="display:none">
+  <div id="page2">
     <h1>Но ведь ты у меня не спрашивала</h1>
     <button onclick="back()">Вернуться назад</button>
   </div>
 
   <!-- Страница 3 -->
-  <div id="page3" style="display:none">
+  <div id="page3">
     <h1>Ой. Тут пароль. Но я помогу тебе его подобрать. Ты готова?</h1>
     <button onclick="startCaptcha()">Да!</button>
   </div>
 
   <!-- CAPTCHA -->
-  <div id="captcha" style="display:none">
+  <div id="captcha">
     <h2>Сначала докажи что ты не робот</h2>
     <p id="captchaQuestion"></p>
     <input type="text" id="captchaInput" placeholder="Сюда ответик">
@@ -58,7 +65,7 @@
   </div>
 
   <!-- Страница 4 -->
-  <div id="page4" style="display:none">
+  <div id="page4">
     <h2>Первая часть пароля состоит из чисел:</h2>
     <button onclick="yes1()">92</button>
     <button onclick="no1()">67</button>
@@ -66,7 +73,7 @@
   </div>
 
   <!-- Страница 5 -->
-  <div id="page5" style="display:none">
+  <div id="page5">
     <h2>Молодец! Теперь введи кодовое слово</h2>
     <input type="text" id="wordInput" placeholder="С маленькой буквы">
     <button onclick="checkWord()">Проверить</button>
@@ -74,13 +81,13 @@
   </div>
 
   <!-- Страница 6 -->
-  <div id="page6" style="display:none">
+  <div id="page6">
     <h1>Неа, думай еще</h1>
     <button onclick="backToNumbers()">Назад</button>
   </div>
 
   <!-- Страница 7 — финальный этап -->
-  <div id="page7" style="display:none">
+  <div id="page7">
     <h1>Уууумница! Теперь заключительный этап. Кто зайчик?</h1>
     <div id="choiceBox">
       <button onclick="iAm()">Я</button>
@@ -89,21 +96,21 @@
   </div>
 
   <!-- Страница 10 — победа -->
-  <div id="page10" style="display:none">
+  <div id="page10">
     <h1>Правильно 😌 Ты зайчик!</h1>
   </div>
 
   <!-- Контейнер истории -->
-  <div id="storyContainer" style="display:none;">
-    <div class="slide" style="display:block; text-align:center;">
+  <div id="storyContainer">
+    <div class="slide">
       <img src="image1.jpg.jpg" alt="Фото">
       <h2>Мы знакомы уже 62 дня. А началось все так интересно...</h2>
     </div>
-    <div class="slide" style="display:none; display:flex; align-items:center; gap:20px;">
+    <div class="slide">
       <img src="image2.jpg.jpg" alt="Фото" style="width:400px;">
       <p>В один из худших зимних дней звезды мне подарили тебя — любопытную кошечку...</p>
     </div>
-    <div class="slide" style="display:none; text-align:center;">
+    <div class="slide">
       <div style="display:flex; justify-content:center; gap:10px;">
         <img src="image4.jpg.jpg" style="width:300px">
         <img src="image5.jpg.jpg" style="width:300px">
@@ -112,130 +119,130 @@
       </div>
       <p>Приятные воспоминания</p>
     </div>
-    <div class="slide" style="display:none; text-align:center;">
+    <div class="slide">
       <h2>Лерочка, поздравляю тебя с 8 марта!</h2>
       <p>Ты прекрасна. Желаю радости, улыбок и всего, что делает тебя счастливой.<br>
-         Я очень рад, что мы познакомились и смогли общаться. Ты особенная, и мне приятно быть рядом с тобой. Целую 💋</p>
-      
+      Я очень рад, что мы познакомились и смогли общаться. Ты особенная, и мне приятно быть рядом с тобой. Целую 💋</p>
     </div>
   </div>
 
 </div>
 
 <script>
-  // Переходы между страницами
-  function yes(){
-    document.getElementById("page1").style.display="none";
-    document.getElementById("page3").style.display="block";
-  }
-  function no(){
-    document.getElementById("page1").style.display="none";
-    document.getElementById("page2").style.display="block";
-  }
-  function back(){
-    document.getElementById("page2").style.display="none";
-    document.getElementById("page1").style.display="block";
-  }
-  function startCaptcha(){
-    document.getElementById("page3").style.display="none";
-    document.getElementById("captcha").style.display="block";
-  }
+  const audioBtn = document.getElementById('audioBtn');
+const bgAudio = document.getElementById('bgAudio');
 
-  // CAPTCHA
-  let num1 = Math.floor(Math.random()*10)+1;
-  let num2 = Math.floor(Math.random()*10)+1;
-  let answer = num1 + num2;
-  document.getElementById("captchaQuestion").innerText = num1 + " + " + num2 + " = ?";
-  document.getElementById("checkCaptcha").onclick = function(){
-    let userAnswer = document.getElementById("captchaInput").value;
-    if(userAnswer == answer){
-      document.getElementById("captchaResult").innerText = "Правильно! Поздравляю.";
-      setTimeout(function(){
-        document.getElementById("captcha").style.display="none";
-        document.getElementById("page4").style.display="block";
-      },500);
+// Слушаем клик по кнопке
+audioBtn.addEventListener('click', () => {
+    // Если аудио уже играет, ставим на паузу
+    if (!bgAudio.paused) {
+        bgAudio.pause();
+        audioBtn.innerText = '🔊';
     } else {
-      document.getElementById("captchaResult").innerText = "Неправильный ответ 😈 Попробуй ещё";
+        bgAudio.currentTime = 15; // запускаем с 15-й секунды
+        bgAudio.play();
+        audioBtn.innerText = '🔇';
     }
-  }
+});
+// --- ТВОИ СУЩЕСТВУЮЩИЕ ФУНКЦИИ ---
+function yes(){ document.getElementById("page1").style.display="none"; document.getElementById("page3").style.display="block"; }
+function no(){ document.getElementById("page1").style.display="none"; document.getElementById("page2").style.display="block"; }
+function back(){ document.getElementById("page2").style.display="none"; document.getElementById("page1").style.display="block"; }
+function startCaptcha(){ document.getElementById("page3").style.display="none"; document.getElementById("captcha").style.display="block"; }
 
-  // Страница 4 — числа
-  function yes1(){
-    document.getElementById("page4").style.display="none";
-    document.getElementById("page5").style.display="block";
-  }
-  function no1(){
-    document.getElementById("page4").style.display="none";
-    document.getElementById("page6").style.display="block";
-  }
-  function backToNumbers(){
-    document.getElementById("page6").style.display="none";
-    document.getElementById("page4").style.display="block";
-  }
+// CAPTCHA
+let num1 = Math.floor(Math.random()*10)+1;
+let num2 = Math.floor(Math.random()*10)+1;
+let answer = num1 + num2;
+document.getElementById("captchaQuestion").innerText = num1 + " + " + num2 + " = ?";
+document.getElementById("checkCaptcha").onclick = function(){
+  let userAnswer = document.getElementById("captchaInput").value;
+  if(userAnswer == answer){
+    document.getElementById("captchaResult").innerText = "Правильно! Поздравляю.";
+    setTimeout(()=>{document.getElementById("captcha").style.display="none"; document.getElementById("page4").style.display="block";},500);
+  } else {document.getElementById("captchaResult").innerText = "Неправильный ответ 😈 Попробуй ещё";}
+}
 
-  // Страница 5 — кодовое слово
-  function checkWord(){
-    let word = document.getElementById("wordInput").value.trim().toLowerCase();
-    if(word === "мяу"){
-      document.getElementById("wordResult").innerText = "Правильно 😺";
-      setTimeout(function(){
-        document.getElementById("page5").style.display="none";
-        document.getElementById("page7").style.display="block";
-      },500);
-    } else {
-      document.getElementById("wordResult").innerText = "Неправильно. Подумай ещё.";
-    }
-  }
+// Страница 4
+function yes1(){ document.getElementById("page4").style.display="none"; document.getElementById("page5").style.display="block"; }
+function no1(){ document.getElementById("page4").style.display="none"; document.getElementById("page6").style.display="block"; }
+function backToNumbers(){ document.getElementById("page6").style.display="none"; document.getElementById("page4").style.display="block"; }
 
-  // Финальный этап
-  function iAm(){
-    document.getElementById("page7").style.display="none";
-    document.getElementById("page10").style.display="block";
-    startStory(); // запуск истории после клика на победу
-  }
+// Страница 5
+function checkWord(){
+  let word = document.getElementById("wordInput").value.trim().toLowerCase();
+  if(word==="мяу"){ document.getElementById("wordResult").innerText="Правильно 😺"; setTimeout(()=>{document.getElementById("page5").style.display="none"; document.getElementById("page7").style.display="block";},500);}
+  else { document.getElementById("wordResult").innerText="Неправильно. Подумай ещё.";}
+}
 
-  // Кнопка "Не я", которая убегает
-  let noButton = document.getElementById("noMe");
-  function moveButton(){
-    let box = document.getElementById("choiceBox");
-    let maxX = box.clientWidth - noButton.offsetWidth;
-    let maxY = box.clientHeight - noButton.offsetHeight;
-    let randomX = Math.random() * maxX;
-    let randomY = Math.random() * maxY;
-    noButton.style.left = randomX + "px";
-    noButton.style.top = randomY + "px";
-  }
-  noButton.addEventListener("mouseenter", moveButton);
-  noButton.addEventListener("mousedown", moveButton);
+// Финальный этап
+function iAm(){
+  document.getElementById("page7").style.display="none";
+  document.getElementById("page10").style.display="block";
+  startStory();
+}
 
-  // История — слайды
-  let storyContainer = document.getElementById("storyContainer");
-  let slides = storyContainer.querySelectorAll(".slide");
-  let currentSlide = 0;
+// Убегающая кнопка
+let noButton = document.getElementById("noMe");
+function moveButton(){
+  let box = document.getElementById("choiceBox");
+  let maxX = box.clientWidth - noButton.offsetWidth;
+  let maxY = box.clientHeight - noButton.offsetHeight;
+  noButton.style.left = Math.random()*maxX + "px";
+  noButton.style.top = Math.random()*maxY + "px";
+}
+noButton.addEventListener("mouseenter", moveButton);
+noButton.addEventListener("mousedown", moveButton);
 
-  function startStory(){
-    page10.style.display = "none";
-    storyContainer.style.display = "block";
-    currentSlide = 0;
-    slides.forEach((s,i)=> s.style.display = i===0?"block":"none");
-  }
+// История
+let storyContainer = document.getElementById("storyContainer");
+let slides = storyContainer.querySelectorAll(".slide");
+let currentSlide = 0;
+function startStory(){
+  document.getElementById("page10").style.display="none";
+  storyContainer.style.display="block";
+  currentSlide=0;
+  slides.forEach((s,i)=> s.style.display = i===0?"block":"none");
+}
+storyContainer.addEventListener("click", ()=>{
+  slides[currentSlide].style.display="none";
+  currentSlide++;
+  if(currentSlide<slides.length) slides[currentSlide].style.display="block";
+});
 
-  storyContainer.addEventListener("click", function(){
-    slides[currentSlide].style.display = "none";
-    currentSlide++;
-    if(currentSlide < slides.length){
-      slides[currentSlide].style.display = "block";
-    }
-  });
+// --- НОВЫЕ ФУНКЦИИ ---
+// Музыка
 let music = document.getElementById("bgMusic");
 music.volume = 0.25;
+function startMusic(){
+    music.play().catch(()=>{});
+    let targetVolume = 0.25;
+    music.volume = 0;
+    let interval = setInterval(()=>{
+        if(music.volume<targetVolume-0.01){music.volume=Math.min(targetVolume, music.volume+0.02);}
+        else{music.volume=targetVolume; clearInterval(interval);}
+    },150);
+}
+document.addEventListener("click", startMusic, {once:true});
+document.addEventListener("touchstart", startMusic, {once:true});
 
-document.addEventListener("click", function(){
-    music.play();
-}, { once: true });
+// Падающие сердечки
+function createHeart(){
+  const heart = document.createElement('div');
+  heart.className='heart';
+  heart.textContent='❤';
+  heart.style.left=Math.random()*100+'vw';
+  heart.style.fontSize=(12+Math.random()*20)+'px';
+  heart.style.opacity=0.9;
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),4500);
+}
+setInterval(createHeart,700);
+
 </script>
+</body>
+</html>
 
 
 </body>
 </html>
-
