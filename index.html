@@ -28,15 +28,8 @@
 </audio>
 
 <div class="containerStart">
-<!-- Кнопка аудио -->
-    <button id="audioBtn" title="Включить музыку" aria-label="Включить музыку">
-      🔊
-    </button>
- <!-- Сам аудиотрек -->
-    <audio id="bgAudio" loop>
-      <source src="music.mp3" type="audio/mpeg">
-    </audio>
-<!-- Страница 1 -->
+
+  <!-- Страница 1 -->
   <div id="page1">
     <h1>Привет!!! Хочешь подарочек?</h1>
     <button onclick="yes()">Да</button>
@@ -129,21 +122,6 @@
 </div>
 
 <script>
-  const audioBtn = document.getElementById('audioBtn');
-const bgAudio = document.getElementById('bgAudio');
-
-// Слушаем клик по кнопке
-audioBtn.addEventListener('click', () => {
-    // Если аудио уже играет, ставим на паузу
-    if (!bgAudio.paused) {
-        bgAudio.pause();
-        audioBtn.innerText = '🔊';
-    } else {
-        bgAudio.currentTime = 15; // запускаем с 15-й секунды
-        bgAudio.play();
-        audioBtn.innerText = '🔇';
-    }
-});
 // --- ТВОИ СУЩЕСТВУЮЩИЕ ФУНКЦИИ ---
 function yes(){ document.getElementById("page1").style.display="none"; document.getElementById("page3").style.display="block"; }
 function no(){ document.getElementById("page1").style.display="none"; document.getElementById("page2").style.display="block"; }
