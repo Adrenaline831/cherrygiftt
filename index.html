@@ -24,7 +24,9 @@
 </style>
 </head>
 <body>
-
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 <div class="containerStart">
 
   <!-- Страница 1 -->
@@ -225,8 +227,15 @@
       slides[currentSlide].style.display = "block";
     }
   });
+let music = document.getElementById("bgMusic");
+music.volume = 0.25;
+
+document.addEventListener("click", function(){
+    music.play();
+}, { once: true });
 </script>
 
 
 </body>
 </html>
+
