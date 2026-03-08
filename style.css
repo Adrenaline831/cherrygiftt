@@ -1,202 +1,182 @@
-/* Скрываем все страницы кроме первой */
-#page2,
-#page3,
-#captcha,
-#page4,
-#page5,
-#page6,
-#page7,
-#page10,
-#storyContainer {
-    display: none;
-}
+/* ------------------ Скрываем все кроме первой страницы ------------------ */
+#page2,#page3,#captcha,#page4,#page5,#page6,#page7,#page10,#storyContainer{display:none;}
 
-/* Общие стили для body и контейнера */
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom right, #ffe6f0, #fff4e6); /* фон открытки */
-    color: #333;
-}
-
-.containerStart {
-    text-align: center;
-    background: white;
-    padding: 40px 60px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    max-width: 600px;
-    width: 90%;
-}
-
-/* Заголовки */
-h1, h2 {
-    margin: 20px 0;
-    color: #d63384; /* розовый для праздничного настроения */
-}
-
-/* Кнопки */
-button {
-    padding: 12px 25px;
-    margin: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    background: linear-gradient(45deg, #ff99cc, #ff66aa);
-    color: white;
-    transition: transform 0.2s, background 0.3s;
-}
-
-button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(45deg, #ff66aa, #ff3388);
-}
-
-/* Поля ввода */
-input {
-    padding: 10px;
-    margin: 10px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    width: 80%;
-    max-width: 300px;
-}
-
-/* Кнопка убегает */
-#choiceBox {
-    position: relative;
-    height: 200px;
-    margin-top: 40px;
-}
-
-#choiceBox button {
-    padding: 12px 25px;
-    font-size: 16px;
-}
-
-#noMe {
-    position: absolute;
-    left: 150px;
-    top: 60px;
-}
-
-/* Контейнер истории */
-#storyContainer {
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.slide {
-    display: none;
-    text-align: center;
-    animation: fadeIn 0.5s;
-}
-
-.slide img {
-    border-radius: 10px;
-    max-width: 100%;
-    margin: 10px 0;
-}
-
-.slide p, .slide h2 {
-    margin-top: 10px;
-}
-
-/* Анимация плавного появления */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95);}
-    to { opacity: 1; transform: scale(1);}
-
-}
-/* ---------- АДАПТИВ ДЛЯ ТЕЛЕФОНОВ ---------- */
-@media (max-width: 420px){
-
+/* ------------------ Основные стили ------------------ */
 body{
-    padding:20px;
-    align-items:flex-start;
-}
-
-/* контейнер открытки */
-.containerStart{
-    padding:25px 20px;
-    border-radius:16px;
-    width:100%;
-}
-
-/* заголовки */
-h1{
-    font-size:24px;
-}
-
-h2{
-    font-size:20px;
-}
-
-p{
-    font-size:16px;
-}
-
-/* кнопки */
-button{
-    width:100%;
-    font-size:16px;
-    padding:14px;
-    margin:8px 0;
-}
-
-/* поле ввода */
-input{
-    width:100%;
-    font-size:16px;
-}
-
-/* кнопки на первой странице */
-#page1 button{
-    width:100%;
-}
-
-/* блок с "кто зайчик" */
-#choiceBox{
-    height:160px;
-}
-
-/* картинки в истории */
-.slide img{
-    width:100%;
-    height:auto;
-}
-
-/* ряд из воспоминаний */
-.slide div{
-    flex-wrap:wrap;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+    background: linear-gradient(to bottom right,#ffe6f0,#fff4e6);
+    color:#333;
+    display:flex;
     justify-content:center;
-}
-
-.slide div img{
-    width:42%;
-    margin:4px;
-}
-
-/* текст рядом с фото (вторая сцена) */
-.slide[style*="flex"]{
-    flex-direction:column;
+    align-items:center;
+    min-height:100vh;
     text-align:center;
 }
 
-.slide[style*="flex"] img{
-    width:100%;
+.containerStart{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:white;
+    padding:40px 60px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    max-width:600px;
+    width:90%;
 }
 
-/* уменьшение отступов */
-.slide p{
-    padding:0 5px;
+/* ------------------ Заголовки ------------------ */
+h1,h2{margin:20px 0; color:#d63384;}
+
+/* ------------------ Кнопки ------------------ */
+button{
+    padding:12px 25px;
+    margin:10px;
+    font-size:16px;
+    border-radius:10px;
+    border:none;
+    cursor:pointer;
+    background:linear-gradient(45deg,#ff99cc,#ff66aa);
+    color:white;
+    transition:transform 0.2s, background 0.3s;
+}
+button:hover{
+    transform:scale(1.05);
+    background:linear-gradient(45deg,#ff66aa,#ff3388);
 }
 
+/* ------------------ Поля ввода ------------------ */
+input{
+    padding:10px;
+    margin:10px;
+    font-size:16px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    width:80%;
+    max-width:300px;
+}
+
+/* ------------------ Контейнер выбора ------------------ */
+#choiceBox{
+    position:relative;
+    height:200px;
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+#choiceBox button{padding:12px 25px; font-size:16px;}
+#noMe{position:absolute; left:150px; top:60px;}
+
+/* ------------------ Контейнер истории ------------------ */
+#storyContainer{
+    cursor:pointer;
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.slide{
+    display:none;
+    text-align:center;
+    animation:fadeIn 0.5s;
+    flex-direction:column;
+}
+.slide img{
+    border-radius:10px;
+    max-width:100%;
+    margin:10px 0;
+    object-fit:cover;
+}
+.slide p,.slide h2{margin-top:10px;}
+
+/* ------------------ Анимация ------------------ */
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.95);}
+    to{opacity:1; transform:scale(1);}
+}
+
+/* ------------------ Сердечки ------------------ */
+.heart{
+  position:fixed;
+  pointer-events:none;
+  color:#ff6699;
+  animation:fall 3.6s linear;
+}
+@keyframes fall{
+  0%{transform:translateY(-10vh) scale(.6); opacity:0;}
+  50%{opacity:1;}
+  100%{transform:translateY(110vh) scale(1); opacity:0;}
+}
+
+/* ------------------ Адаптив для телефонов ------------------ */
+@media(max-width:420px){
+    body{
+        padding:20px;
+        align-items:flex-start;
+    }
+    .containerStart{
+        padding:25px 20px;
+        border-radius:16px;
+        width:100%;
+    }
+    h1{font-size:24px;}
+    h2{font-size:20px;}
+    p{font-size:16px;}
+    button{
+        width:100%;
+        font-size:16px;
+        padding:14px;
+        margin:8px 0;
+    }
+    input{width:100%; font-size:16px;}
+    #page1 button{width:100%;}
+    #choiceBox{
+        height:160px;
+        justify-content:center;
+        align-items:center;
+    }
+    #noMe{
+        left:50%;
+        top:50%;
+        transform:translate(-50%,-50%);
+    }
+    .slide img{width:100%; height:auto;}
+    .slide div{flex-wrap:wrap; justify-content:center;}
+    .slide div img{width:42%; margin:4px;}
+    .slide[style*="flex"]{
+        flex-direction:column;
+        text-align:center;
+    }
+    .slide[style*="flex"] img{
+        width:100%;
+        height:auto;
+    }
+    .slide p{padding:0 5px;}
+}
+/* Кнопка включения музыки сбоку */
+#audioBtn {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: rgba(255, 99, 180, 0.8);
+    border: none;
+    border-radius: 50%;
+    padding: 12px 14px;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background 0.3s;
+    z-index: 1000;
+}
+
+#audioBtn:hover {
+    transform: scale(1.2);
+    background: rgba(255, 99, 180, 1);
 }
